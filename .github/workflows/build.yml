@@ -28,14 +28,14 @@ jobs:
 
       - name: Build Windows installer
         run: npm run dist:win -- --publish never
-
-     - name: Upload Windows installers
-     uses: actions/upload-artifact@v4
-     with:
-     name: signal-wallpaper-windows
-     path: dist/*.exe
-     if-no-files-found: error
-
+        
+      - name: Upload Windows installers
+        uses: actions/upload-artifact@v4
+        with:
+          name: signal-wallpaper-windows
+          path: dist/*.exe
+          if-no-files-found: error
+        
   macos:
     name: macOS
     runs-on: macos-latest
