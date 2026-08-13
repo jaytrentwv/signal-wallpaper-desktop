@@ -38,7 +38,22 @@ The current v1.0.0 macOS build is not yet Apple Developer ID signed or notarized
 
 Because of this, macOS may display a security warning when opening SIGNAL Wallpaper for the first time.
 
-If macOS blocks the application, you may need to allow it through **System Settings → Privacy & Security**.
+If macOS blocks the application, follow one of these steps:
+
+**Option 1 — Right-click to open (easiest)**
+1. Drag **SIGNAL Wallpaper** into your Applications folder
+2. Go to **Applications** in Finder
+3. **Right-click** (or Control-click) the app and select **Open**
+4. Click **Open** in the warning dialog
+5. The app will launch and macOS will remember your choice going forward
+
+**Option 2 — Strip the quarantine flag via Terminal**
+1. Open **Terminal** and run:
+   ```bash
+   xattr -cr ~/Downloads/SIGNAL-Wallpaper-1.0.0-mac-arm64.dmg
+   ```
+2. Double-click the DMG and drag the app to Applications
+3. Launch normally
 
 Apple Developer ID signing and notarization are planned for a future release.
 
