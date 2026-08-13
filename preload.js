@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld('signalDesktop', {
     const bytes = data instanceof Uint8Array ? data : new Uint8Array(data);
     return ipcRenderer.invoke('desktop:save-file', { fileName, data: bytes });
   },
-  openImageDialog: () => ipcRenderer.invoke('desktop:open-image-dialog'),
+  chooseImage: () => ipcRenderer.invoke('desktop:open-image-dialog'),
   onOpenImage: (callback) => {
     const handler = () => callback();
     ipcRenderer.on('desktop-open-image', handler);

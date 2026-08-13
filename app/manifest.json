@@ -1,0 +1,8 @@
+{
+  "name": "SIGNAL Wallpaper",
+  "short_name": "SIGNAL",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#0a0b0a",
+  "theme_color": "#0a0b0a"
+}

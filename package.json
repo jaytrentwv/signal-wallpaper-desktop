@@ -22,13 +22,54 @@
     "appId": "com.pwnhacker.signalwallpaper",
     "productName": "SIGNAL Wallpaper",
     "artifactName": "SIGNAL-Wallpaper-${version}-${os}-${arch}.${ext}",
-    "directories": {"output": "dist", "buildResources": "build"},
-    "files": ["main.js", "preload.js", "app/**/*", "package.json"],
+    "directories": {
+      "output": "dist",
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "app/**/*",
+      "package.json"
+    ],
     "asar": true,
-    "asarUnpack": ["app/ffmpeg/*.wasm"],
-    "win": {"target": [{"target": "nsis", "arch": ["x64", "arm64"]}], "icon": "build/icon.ico"},
-    "nsis": {"oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "createStartMenuShortcut": true, "shortcutName": "SIGNAL Wallpaper"},
-    "mac": {"target": [{"target": "dmg", "arch": ["x64", "arm64"]}, {"target": "zip", "arch": ["x64", "arm64"]}], "category": "public.app-category.graphics-design", "icon": "build/icon.png", "hardenedRuntime": true, "gatekeeperAssess": false},
-    "dmg": {"title": "SIGNAL Wallpaper ${version}"}
+    "asarUnpack": [
+      "app/ffmpeg/*.wasm"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "SIGNAL Wallpaper"
+    },
+    "mac": {
+      "target": [
+        {
+          "target": "dmg",
+          "arch": ["x64", "arm64"]
+        },
+        {
+          "target": "zip",
+          "arch": ["x64", "arm64"]
+        }
+      ],
+      "category": "public.app-category.graphics-design",
+      "icon": "build/icon.png",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false
+    },
+    "dmg": {
+      "title": "SIGNAL Wallpaper ${version}"
+    }
   }
 }
