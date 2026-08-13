@@ -47,6 +47,32 @@ Artifacts are written to `dist/`.
 
 The project can build an unsigned local DMG for testing. Public distribution should be signed with an Apple Developer ID certificate and notarized. Configure the normal electron-builder Apple signing environment before running the macOS build.
 
+### Installing on macOS (Gatekeeper bypass)
+
+Because this app is not yet notarized with Apple, macOS may show a **"damaged and can't be opened"** error. Follow these steps to install it anyway:
+
+**Option 1 — Right-click to open (easiest)**
+
+1. Download the `.dmg` file
+2. Double-click the DMG to mount it
+3. Drag **SIGNAL Wallpaper** into your Applications folder
+4. Go to **Applications** in Finder
+5. **Right-click** (or Control-click) the app and select **Open**
+6. Click **Open** in the warning dialog that appears
+7. The app will launch and macOS will remember your choice going forward
+
+**Option 2 — Strip the quarantine flag via Terminal**
+
+1. Download the `.dmg` file
+2. Open **Terminal** and run:
+   ```bash
+   xattr -cr ~/Downloads/SIGNAL-Wallpaper-1.0.0-mac-arm64.dmg
+   ```
+3. Double-click the DMG and drag the app to Applications
+4. Launch normally
+
+> **Note:** If you moved the app to a different folder, adjust the path in the command above accordingly.
+
 ## App architecture
 
 `main.js` starts a private HTTP server bound only to `127.0.0.1` on a random free port. The renderer is loaded from this local origin rather than `file://`. This preserves browser-style relative `fetch()`, worker, and WebAssembly behavior used by the bundled FFmpeg code without exposing a network service externally.
