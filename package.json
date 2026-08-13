@@ -5,7 +5,7 @@
   "main": "main.js",
   "author": "pwnhacker.com",
   "homepage": "https://pwnhacker.com/majorjoker/live-wallpaper-generator.html",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "private": true,
   "scripts": {
     "start": "electron .",
