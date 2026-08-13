@@ -40,6 +40,26 @@ If macOS blocks the application, you may need to allow it through System Setting
 
 Apple Developer ID signing and notarization are planned for a future release.
 
+ecause this app is not yet notarized with Apple, macOS may show a "damaged and can't be opened" error. Follow these steps to install it anyway:
+
+Option 1 — Right-click to open (easiest)
+
+Download the .dmg file
+Double-click the DMG to mount it
+Drag SIGNAL Wallpaper into your Applications folder
+Go to Applications in Finder
+Right-click (or Control-click) the app and select Open
+Click Open in the warning dialog that appears
+The app will launch and macOS will remember your choice going forward
+Option 2 — Strip the quarantine flag via Terminal
+
+Download the .dmg file
+Open Terminal and run:
+xattr -cr ~/Downloads/SIGNAL-Wallpaper-1.0.0-mac-arm64.dmg
+Double-click the DMG and drag the app to Applications
+Launch normally
+Note: If you moved the app to a different folder, adjust the path in the command above accordingly.
+
 🔒 Privacy
 SIGNAL Wallpaper is designed around local processing.
 
