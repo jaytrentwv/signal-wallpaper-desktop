@@ -1,111 +1,57 @@
-# SIGNAL Wallpaper Desktop
+SIGNAL Wallpaper v1.0.0
+Turn a single image into a seamless looping animated wallpaper — directly from your desktop.
 
-Desktop packaging for the SIGNAL/WALLPAPER live wallpaper encoder.
+SIGNAL Wallpaper is designed to make creating high-quality animated wallpapers simple. Import an image, customize the animation, preview the result, and export your finished video without uploading your image to an online service.
 
-## Included
+✨ Features
+Create animated wallpapers from a single image
+Seamless looping animation
+High-resolution / 4K output support
+Local processing — your images stay on your computer
+Simple desktop interface
+Windows and macOS support
+Intel, AMD, and Apple Silicon support
+🪟 Windows
+For most Windows 10/11 computers, download:
 
-- Existing SIGNAL/WALLPAPER UI and renderer
-- Local FFmpeg WebAssembly bundle
-- Native Windows/macOS application shell using Electron
-- Native Save As dialog for rendered MP4/WebM files
-- Native File > Open Image menu action
-- Offline local serving of app assets so FFmpeg workers/WASM load reliably
-- Windows NSIS packaging configuration
-- macOS DMG/ZIP packaging configuration for Intel and Apple Silicon
+SIGNAL-Wallpaper-1.0.0-win-x64.exe
 
-## Requirements
+Run the installer and follow the setup prompts.
 
-- Node.js 22 or newer recommended
-- npm
-- Windows 10/11 to build/test the Windows installer
-- macOS to build/test/sign/notarize the macOS application
+🍎 macOS
+Apple Silicon
+For Macs with Apple M1, M2, M3, M4, M5 or newer Apple Silicon processors:
 
-## Run in development
+SIGNAL-Wallpaper-1.0.0-mac-arm64.dmg
 
-```bash
-npm install
-npm start
-```
+Intel Mac
+For older Intel-based Macs:
 
-## Build Windows
+SIGNAL-Wallpaper-1.0.0-mac-x64.dmg
 
-```bash
-npm run dist:win
-```
+Open the DMG and install SIGNAL Wallpaper.
 
-Artifacts are written to `dist/`.
+macOS Security Notice
+The current v1.0.0 macOS build is not yet Apple Developer ID signed or notarized.
 
-## Build macOS
+Because of this, macOS may display a security warning when opening SIGNAL Wallpaper for the first time.
 
-```bash
-npm run dist:mac
-```
+If macOS blocks the application, you may need to allow it through System Settings → Privacy & Security.
 
-Artifacts are written to `dist/`.
+Apple Developer ID signing and notarization are planned for a future release.
 
-### macOS signing/notarization
+🔒 Privacy
+SIGNAL Wallpaper is designed around local processing.
 
-The project can build an unsigned local DMG for testing. Public distribution should be signed with an Apple Developer ID certificate and notarized. Configure the normal electron-builder Apple signing environment before running the macOS build.
+Your source images and wallpaper creation process remain on your computer rather than being uploaded to a remote image-processing service.
 
-### Installing on macOS (Gatekeeper bypass)
+🚀 First Release
+v1.0.0 is the first desktop release of SIGNAL Wallpaper.
 
-Because this app is not yet notarized with Apple, macOS may show a **"damaged and can't be opened"** error. Follow these steps to install it anyway:
+Feedback, bug reports, and feature suggestions are welcome as the desktop application continues to improve.
 
-**Option 1 — Right-click to open (easiest)**
+SIGNAL Wallpaper
 
-1. Download the `.dmg` file
-2. Double-click the DMG to mount it
-3. Drag **SIGNAL Wallpaper** into your Applications folder
-4. Go to **Applications** in Finder
-5. **Right-click** (or Control-click) the app and select **Open**
-6. Click **Open** in the warning dialog that appears
-7. The app will launch and macOS will remember your choice going forward
+One image. Bring it to life.
 
-**Option 2 — Strip the quarantine flag via Terminal**
-
-1. Download the `.dmg` file
-2. Open **Terminal** and run:
-   ```bash
-   xattr -cr ~/Downloads/SIGNAL-Wallpaper-1.0.0-mac-arm64.dmg
-   ```
-3. Double-click the DMG and drag the app to Applications
-4. Launch normally
-
-> **Note:** If you moved the app to a different folder, adjust the path in the command above accordingly.
-
-## App architecture
-
-`main.js` starts a private HTTP server bound only to `127.0.0.1` on a random free port. The renderer is loaded from this local origin rather than `file://`. This preserves browser-style relative `fetch()`, worker, and WebAssembly behavior used by the bundled FFmpeg code without exposing a network service externally.
-
-The renderer stays isolated from Node.js. A narrow preload bridge exposes only native save/open functionality.
-
-## Packaging notes
-
-Electron and electron-builder versions are pinned in `package.json` for reproducible installs. The FFmpeg `.wasm` file is unpacked from ASAR so it can be streamed reliably at runtime.
-
-## GitHub repository setup
-
-Recommended repository name: `signal-wallpaper-desktop`
-
-This source tree is ready to commit directly to a GitHub repository. The included `.gitignore` excludes dependencies, build output, logs, and OS metadata. The FFmpeg WebAssembly runtime is intentionally committed under `app/ffmpeg/` so the application remains self-contained and offline-capable.
-
-### First push
-
-```bash
-git init
-git branch -M main
-git add .
-git commit -m "Initial SIGNAL Wallpaper desktop app"
-git remote add origin https://github.com/YOUR-USERNAME/signal-wallpaper-desktop.git
-git push -u origin main
-```
-
-### GitHub Actions
-
-`.github/workflows/build.yml` runs Windows and macOS packaging checks on pushes and pull requests to `main`. It also supports manual runs from the **Actions** tab. Build outputs are uploaded as workflow artifacts.
-
-The macOS CI build is unsigned. For public macOS distribution, configure Apple Developer signing and notarization secrets before publishing a release.
-
-## Large files
-
-`app/ffmpeg/ffmpeg-core.wasm` is roughly 31 MB. It is intentionally stored directly in Git because it is below GitHub's 100 MB per-file limit. Git LFS is not required for the current project.
+You can still use SIGNAL via the web: https://pwnhacker.com/majorjoker/live-wallpaper-generator.html
