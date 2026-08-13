@@ -56,9 +56,11 @@ jobs:
       - name: Build macOS app
         run: npm run dist:mac -- --publish never
 
-      - name: Upload macOS build
+      - name: Upload macOS installers
         uses: actions/upload-artifact@v4
         with:
           name: signal-wallpaper-macos
-          path: dist/*
+          path: |
+            dist/*.dmg
+            dist/*.zip
           if-no-files-found: error
